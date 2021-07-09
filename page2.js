@@ -15,18 +15,26 @@ const correct = () => {
     let mark = 0
     let mark2 = mark
     let mistakes = new Array(0)
-    const s1 = document.exercise.s1.value
-    const s2 = document.exercise.s2.value
-    const s3 = document.exercise.s3.value
-    const s4 = document.exercise.s4.value
-    const s5 = document.exercise.s5.value
-    const s6 = document.exercise.s6.value
-    const s7 = document.exercise.s7.value
-    const s8 = document.exercise.s8.value
-    const s9 = document.exercise.s9.value
-    const s10 = document.exercise.s10.value
-    const answers = [s1,s2,s3,s4,s5,s6,s7,s8,s9,s10]
+    let s1 = document.exercise.s1.value
+    let s2 = document.exercise.s2.value
+    let s3 = document.exercise.s3.value
+    let s4 = document.exercise.s4.value
+    let s5 = document.exercise.s5.value
+    let s6 = document.exercise.s6.value
+    let s7 = document.exercise.s7.value
+    let s8 = document.exercise.s8.value
+    let s9 = document.exercise.s9.value
+    let s10 = document.exercise.s10.value
+    let answers1 = [s1,s2,s3,s4,s5,s6,s7,s8,s9,s10]
+    let answers = answers1.map( e => e.trim())
 
+    for(let a = 0;a<10;a++){
+        while(answers[a][answers[a].length-2] == " "){
+            answers[a] = answers[a].slice(0,answers[a].length-2)+answers[a].slice(answers[a].length-1,answers[a].length)
+            alert(answers[a])
+        }
+        
+    }
     const ss1 = () => {
         document.getElementById("sol1").innerHTML = sol1[0]
     }
