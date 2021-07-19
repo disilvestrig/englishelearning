@@ -1,5 +1,5 @@
 form1 = document.getElementById("b1")
-sol1=["turneddownthe"]
+sol1=["turned","down","the"]
 sol2=["Why don't you come to visit us on Sunday?","Why do not you come to visit us on Sunday?"]
 sol3=["Let's take a taxi. I don't want us to be late.","Let us take a taxi.I do not want us to be late","Let us take a taxi.I don't want us to be late","Let's take a taxi. I do not want us to be late"]
 sol4=["Did Ron go upstairs to study or to play?"]
@@ -26,20 +26,32 @@ const correct = () => {
     let s9 = document.exercise.s9.value
     let s10 = document.exercise.s10.value
     let answers1 = [s1,s2,s3,s4,s5,s6,s7,s8,s9,s10]
-    let answers = answers1.map( e => e.trim())
-    let answers_without_spaces = answers.map (e => {
-        return e.replace(/ /g, '')
-    })
+    let answers2 = answers1.map ( e => e.trim())
+    let anwers3 
+    let answers = answers2.map( e => e.split(' '))
+    let check = 0
 
     for(let i = 0;i<answers.length;i++){
+        check = 0
+        mark2 = mark
+        answers3 = answers[i].filter((e) => {
+            return e != "" 
+            })
         for(let j = 0;j<solutions[i].length;j++){
-            mark2 = mark
-
-            if(solutions[i][j] != answers[i] && solutions[i][j] == answers_without_spaces[i]){
-                mark ++
+            console.log(answers3)
+            if (solutions[i].length!=answers[i].length){
                 break
             }
+            if (solutions[i][j] != answers3[j]){
+                
+                break
+            }
+            check ++
         }
+        if (check == solutions[i].length){
+            mark++
+        }
+
         if ( mark2 != mark){
             mistakes.push("Right answer")
         }
@@ -60,7 +72,7 @@ const correct = () => {
 }
 
 function ss1 () {
-    document.getElementById("sol1").innerHTML= sol1[0]
+    document.getElementById("sol1").innerHTML= sol1[0]+" "+sol1[1]+" "+sol1[2]
 }
 
 function ss2 () {
@@ -98,3 +110,4 @@ function ss9 () {
 function ss10 () {
     document.getElementById("sol10").innerHTML= sol10[0]
 }
+
